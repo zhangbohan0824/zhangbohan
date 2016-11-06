@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多级导航菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        #menu .main-menu{
+            width: 120px;
+            height: 30px;
+            float: left;
+            background: #cccccc;
+            margin-right: 5px;
+        }
+        #menu .main-menu a{
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            display: block;
+            background: lightgray;
+        }
+        #menu .main-menu li{
+            border-bottom: 1px dashed #000;
+        }
+        #menu .sub-menu{
+            display: none;
+            background: blue;
+        }
+        #menu .sub-menu a{
+            background: #eeeeee;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="main-menu">
+        <a href="#">link 1</a>
+        <ul class="sub-menu">
+            <li><a href="#">sublink 1</a></li>
+            <li><a href="#">sublink 2</a></li>
+            <li><a href="#">sublink 3</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <a href="#">link 1</a>
+        <ul class="sub-menu">
+            <li><a href="#">sublink 1</a></li>
+            <li><a href="#">sublink 2</a></li>
+            <li><a href="#">sublink 3</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <a href="#">link 1</a>
+        <ul class="sub-menu">
+            <li><a href="#">sublink 1</a></li>
+            <li><a href="#">sublink 2</a></li>
+            <li><a href="#">sublink 3</a></li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oMenu = document.getElementById('menu');
+    var aLi = oMenu.getElementsByTagName('li');
+    for(var i=0;i<aLi.length;i++){
+        if(aLi[i].className == "main-menu"){
+            aLi[i].onmouseover = function() {
+                var oSubMenu = this.getElementsByTagName('ul')[0];
+                oSubMenu.style.display = "block";
+            };
+            aLi[i].onmouseout = function () {
+                var oSubMenu = this.getElementsByTagName('ul')[0];
+                oSubMenu.style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>
