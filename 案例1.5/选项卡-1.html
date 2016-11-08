@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 300px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #container ul{
+            overflow: hidden;
+        }
+        #container li{
+            float: left;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-right: 5px;
+            cursor: pointer;
+            background: blue;
+        }
+        #tab .selected{
+            background: gray;
+            color: red;
+        }
+        #content{
+            width: 1200px;
+            height: 270px;
+            border: 1px solid orange;
+            left: 0;
+            top: 30px;
+            position: absolute;
+            background:gray;
+        }
+        #content div{
+            float: left;
+            width: 400px;
+            height: 270px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="container">
+<ul id="tab">
+    <li class="selected">111</li>
+    <li>222</li>
+    <li>333</li>
+</ul>
+<div id="content">
+    <div>001</div>
+    <div>002</div>
+    <div>003</div>
+</div>
+</div>
+
+<script src="jslib.js"></script>
+
+    <script>
+        var oContainer = document.getElementById('container');
+        var aLi =  oContainer.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+
+        for(var i=0; i<aLi.length; i++){ //i=3
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                for(var i=0; i<aLi.length; i++){
+                    aLi[i].className = '';
+                }
+                this.className = 'selected';
+                //oContent.style.left = -aDiv[0].offsetWidth*this.index +"px";
+                animate(oContent,{
+                    left:-aDiv[0].offsetWidth*this.index
+                });
+            }
+        }
+
+
+    </script>
+
+
+</body>
+</html>
